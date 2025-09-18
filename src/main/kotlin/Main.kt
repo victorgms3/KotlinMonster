@@ -1,5 +1,7 @@
 package org.example
 
+import org.example.dresseur.Entraineur
+
 /**
  * Change la couleur du message donné selon le nom de la couleur spécifié.
  * Cette fonction utilise les codes d'échappement ANSI pour appliquer une couleur à la sortie console. Si un nom de couleur
@@ -24,10 +26,19 @@ fun changeCouleur(message: String, couleur:String=""): String {
     }
     return "$codeCouleur$message$reset"
 }
+var joueur = Entraineur(1,"Sacha",100)
+var rival = Entraineur(2,"Regis",200)
 
 fun main() {
-    println(changeCouleur("Hello","rouge"))
-    println(changeCouleur("World","bleu"))
-    println("Hello ${changeCouleur("my","jaune")} World")
-    println(changeCouleur("truc","marron"))
+    /**Exemple d'utilisation de la fonction changeCouleur
+*    println(changeCouleur("Hello","rouge"))
+*    println(changeCouleur("World","bleu"))
+*    println("Hello ${changeCouleur("my","jaune")} World")
+*    println(changeCouleur("truc","marron"))
+     */
+    joueur.afficheDetail()
+    rival.afficheDetail()
+    joueur.argents+=50
+    joueur.afficheDetail()
+
 }
