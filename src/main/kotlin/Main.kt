@@ -2,9 +2,11 @@ package org.example
 
 import org.example.dresseur.Entraineur
 import org.example.monde.EspeceMonstre
+import org.example.monde.Zone
+
 /**Exemple d'utilisation de la fonction afficheArt */
 
-var especeX = EspeceMonstre(1,
+val especeX = EspeceMonstre(1,
     "Springleaf",
     "Graine",
     9,
@@ -42,7 +44,7 @@ val flamkip = EspeceMonstre(
     "Sa flamme change d’intensité selon son énergie",
     "Impulsif, joueur, loyal"
 )
-var aquamy = EspeceMonstre(
+val aquamy = EspeceMonstre(
     7,
     "Aquamy",
     "Meteo",
@@ -62,11 +64,30 @@ var aquamy = EspeceMonstre(
     "Fait baisser la température en s’endormant.",
     "Calme, rêveur, mystérieux"
 )
+val route1 = Zone(1,
+    "Zone1",
+    0,
+    mutableListOf(especeX)
+)
+val route2 = Zone(2,
+    "Zone1",
+    5,
+    mutableListOf(flamkip)
+)
+val route3 = Zone(3,
+    "Zone3",
+    10,
+    mutableListOf(aquamy)
+)
 fun main() {
-    println(especeX.afficheArt())
-    println(especeX.afficheArt(false))
-    println(flamkip.afficheArt())
-    println(flamkip.afficheArt(false))
-    println(aquamy.afficheArt())
-    println(aquamy.afficheArt(false))
+    /**Exemple d'utilisation de la fonction afficheArt
+*    println(especeX.afficheArt())
+*    println(especeX.afficheArt(false))
+*    println(flamkip.afficheArt())
+*    println(flamkip.afficheArt(false))
+*    println(aquamy.afficheArt())
+*    println(aquamy.afficheArt(false))
+     */
+    route1.zoneSuivante = route2
+    route2.zonePrecedante = route1
 }
