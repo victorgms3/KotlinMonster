@@ -67,18 +67,17 @@ val aquamy = EspeceMonstre(
 val route1 = Zone(1,
     "Zone1",
     0,
-    mutableListOf(especeX)
 )
 val route2 = Zone(2,
     "Zone1",
     5,
-    mutableListOf(flamkip)
 )
 val route3 = Zone(3,
     "Zone3",
     10,
-    mutableListOf(aquamy)
 )
+
+//Creation d'un objet monstre
 fun main() {
     /**Exemple d'utilisation de la fonction afficheArt
 *    println(especeX.afficheArt())
