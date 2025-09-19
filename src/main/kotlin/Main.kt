@@ -77,24 +77,12 @@ val route3 = Zone(3,
     "Zone3",
     10,
 )
-val testMonstre = IndividuMonstre(1,
-    "Test",
-    especeX,
-    Entraineur(1, "Test", 100),
-    100.0,
-)
+val monstre1 = IndividuMonstre(1, "springleaf", especeX,null,1500.0, )
+val monstre2 = IndividuMonstre(2, "flamkip", flamkip,null,1500.0, )
+val monstre3 = IndividuMonstre(3, "aquamy", aquamy,null,1500.0, )
 
 //Creation d'un objet monstre
 fun main() {
-    /**Exemple d'utilisation de la fonction afficheArt
-*    println(especeX.afficheArt())
-*    println(especeX.afficheArt(false))
-*    println(flamkip.afficheArt())
-*    println(flamkip.afficheArt(false))
-*    println(aquamy.afficheArt())
-*    println(aquamy.afficheArt(false))
-     */
-    route1.zoneSuivante = route2
-    route2.zonePrecedante = route1
+    monstre1.pv = 100
 
-}
+    }
