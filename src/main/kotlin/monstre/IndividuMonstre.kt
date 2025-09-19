@@ -134,4 +134,18 @@ class IndividuMonstre (
         println("${nom} inflige ${pvAvant-pvApres} dégâts à ${cible.nom}")
     }
 
+    /**
+     * Demande au joueur de renommer le monstre.
+     * Si l'utilisateur entre un texte vide, le nom n'est pas modifié.
+     */
+
+    fun renommer() : Unit {
+        println("Renommer le monstre $nom ? (O/N)")
+        val choix = readln().toString().uppercase()
+        if (choix == "O") {
+            println("Entrez un nouveau nom : ")
+            nom = readln()
+        }
+    }
+//    a tester
 }
