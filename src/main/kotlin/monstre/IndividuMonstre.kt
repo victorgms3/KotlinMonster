@@ -70,7 +70,7 @@ class IndividuMonstre (
     var pv: Int = pvMax
         get() = field
         set(nouveauPv) {
-            field -= nouveauPv
+            field = nouveauPv
             if (field < 0) field = 0
             if (field > pvMax) field = pvMax
         }
@@ -124,6 +124,14 @@ class IndividuMonstre (
      *
      * @param cible Monstre cible de l'attaque.
      */
-
+    fun attaque(cible: IndividuMonstre) : Unit {
+        val degatBrut = this.attaque
+        var degatTotal = degatBrut - (cible.defense / 2)
+        if (degatTotal < 1) degatTotal = 1
+        val pvAvant = cible.pv
+        cible.pv -= degatTotal
+        val pvApres = cible.pv
+        println("${nom} inflige ${pvAvant-pvApres} dégâts à ${cible.nom}")
+    }
 
 }
