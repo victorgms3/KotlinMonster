@@ -3,6 +3,7 @@ package org.example.monstre
 import org.example.dresseur.Entraineur
 import org.example.monde.EspeceMonstre
 import kotlin.random.Random
+import kotlin.math.pow
 
 /**
  * Représente un individu monstre spécifique dans le jeu, appartenant à une espèce donnée.
@@ -46,7 +47,6 @@ class IndividuMonstre (
     var potentiel: Double = Random.nextDouble(0.5, 2.1)
 
     var exp: Double = 0.0
-        private set
 
     var pv: Int = pvMax
         get() = field
@@ -56,5 +56,35 @@ class IndividuMonstre (
             if (field > pvMax) field = pvMax
             if (field - nouveauPv in 0..pvMax) field=nouveauPv
         }
+    /**
+     * Calcule l'expérience totale nécessaire pour atteindre un niveau donné.
+     *
+     * @param niveau Niveau cible.
+     * @return Expérience cumulée nécessaire pour atteindre ce niveau.
+     */
+
+    fun palierExp(niveau : Int): Double {
+        return 100 * (niveau - 1).toDouble().pow(2.0)
+    }
+    fun levelUp() {
+        // 1. Incrémenter le niveau
+        niveau++
+
+        // 2. Sauvegarder l'ancien pvMax pour calcul du gain
+        val ancienPvMax = pvMax
+
+        // 3. Mise à jour des stats
+        attaque += (espece.modAttaque * potentiel).toInt() + (-2..2).random()
+        defense += (espece.modDefense * potentiel).toInt() + (-2..2).random()
+        vitesse += (espece.modVitesse * potentiel).toInt() + (-2..2).random()
+        attaqueSpe += (espece.modAttaqueSpe * potentiel).toInt() + (-2..2).random()
+        defenseSpe += (espece.modDefenseSpe * potentiel).toInt() + (-2..2).random()
+        pvMax += (espece.modPv * potentiel).toInt() + (-5..5).random()
+
+        // 4. Augmenter les PV actuels du gain de pvMax
+        val gainPv = pvMax - ancienPvMax
+        pv += gainPv
+        if (pv > pvMax) pv = pvMax // sécurité
+    }
 
 }

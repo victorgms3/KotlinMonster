@@ -3,6 +3,7 @@ package org.example
 import org.example.dresseur.Entraineur
 import org.example.monde.EspeceMonstre
 import org.example.monde.Zone
+import org.example.monstre.IndividuMonstre
 
 /**Exemple d'utilisation de la fonction afficheArt */
 
@@ -76,6 +77,12 @@ val route3 = Zone(3,
     "Zone3",
     10,
 )
+val testMonstre = IndividuMonstre(1,
+    "Test",
+    especeX,
+    Entraineur(1, "Test", 100),
+    100.0,
+)
 
 //Creation d'un objet monstre
 fun main() {
@@ -89,4 +96,5 @@ fun main() {
      */
     route1.zoneSuivante = route2
     route2.zonePrecedante = route1
+
 }
