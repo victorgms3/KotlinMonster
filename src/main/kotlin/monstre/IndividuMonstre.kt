@@ -70,10 +70,9 @@ class IndividuMonstre (
     var pv: Int = pvMax
         get() = field
         set(nouveauPv) {
-            field = nouveauPv
+            field -= nouveauPv
             if (field < 0) field = 0
             if (field > pvMax) field = pvMax
-            if (field - nouveauPv in 0..pvMax) field=nouveauPv
         }
     /**
      * Calcule l'expérience totale nécessaire pour atteindre un niveau donné.
@@ -85,6 +84,18 @@ class IndividuMonstre (
     fun palierExp(niveau : Int): Double {
         return 100 * (niveau - 1).toDouble().pow(2.0)
     }
+
+    /**
+     * Augmente le niveau du monstre en modifiant ses statistiques et ses points de vie.
+     *
+     * Cette méthode effectue plusieurs actions :
+     * 1. Incrémente le niveau du monstre.
+     * 2. Calcule l'augmentation de chaque statistique en fonction des modificateurs attribués à l'espèce,
+     *    du potentiel individuel du monstre, et d'un facteur de variation aléatoire.
+     * 3. Met à jour les points de vie maximum (pvMax) en appliquant une logique similaire.
+     * 4. Ajuste les points de vie actuels pour refléter le gain en pvMax, tout en s'assurant qu'ils
+     *    ne dépassent pas la nouvelle valeur de pvMax.
+     */
     fun levelUp() {
         // 1. Incrémenter le niveau
         niveau++
@@ -105,5 +116,14 @@ class IndividuMonstre (
         pv += gainPv
         if (pv > pvMax) pv = pvMax // sécurité
     }
+    /**
+     * Attaque un autre [IndividuMonstre] et inflige des dégâts.
+     *
+     * Les dégâts sont calculés de manière très simple pour le moment :
+     * `dégâts = attaque - (défense / 2)` (minimum 1 dégât).
+     *
+     * @param cible Monstre cible de l'attaque.
+     */
+
 
 }

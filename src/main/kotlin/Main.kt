@@ -83,6 +83,7 @@ val monstre3 = IndividuMonstre(3, "aquamy", aquamy,null,1500.0, )
 
 //Creation d'un objet monstre
 fun main() {
-    monstre1.pv = 100
+    monstre1.pv = 10
+    monstre1.pvMax
 
     }
