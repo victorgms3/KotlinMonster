@@ -147,5 +147,5 @@ class IndividuMonstre (
             nom = readln()
         }
     }
-//    a tester
+//    a tester!
 }
